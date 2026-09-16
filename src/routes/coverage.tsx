@@ -1,0 +1,10 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Building2, MapPin, Search } from "lucide-react";
+import { EnquiryForm, PageHero, SectionHeading } from "@/components/shared";
+import apartments from "@/assets/finchnet-apartments.jpeg.asset.json";
+
+const title = "Check Internet Coverage | Finchnet Ventures";
+const description = "Ask Finchnet Ventures to confirm service availability for your home, apartment building, or residential development.";
+export const Route = createFileRoute("/coverage")({ head: () => ({ meta: [{ title }, { name: "description", content: description }, { property: "og:title", content: title }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/coverage" }] }), component: Page });
+const notes = [[MapPin, "Location", "Tell us the area or property address."], [Building2, "Property", "Share the building name and number of units."], [Search, "Assessment", "Availability and requirements can then be confirmed."]] as const;
+function Page() { return <><PageHero eyebrow="Service availability" title="Is Finchnet Available at Your Property?" text="Coverage depends on property location, infrastructure, and installation requirements. Send an enquiry so availability can be assessed." image={apartments.url} /><section className="py-20"><div className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><SectionHeading eyebrow="Coverage enquiry" title="Contact Us to Confirm Availability" text="No locations are listed until confirmed by Finchnet Ventures. Share your property information for a direct assessment." /><div className="mt-8 grid gap-4">{notes.map(([Icon, heading, text]) => <div key={heading} className="flex gap-4"><Icon className="mt-1 size-5 shrink-0 text-blue" /><div><h2 className="font-extrabold">{heading}</h2><p className="mt-1 text-sm text-muted-foreground">{text}</p></div></div>)}</div></div><div className="border border-border bg-secondary p-6 md:p-9"><EnquiryForm kind="coverage" /></div></div></section></>; }
