@@ -11,12 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoverageRouteImport } from './routes/coverage'
 import { Route as InternetPackagesRouteImport } from './routes/internet-packages'
 import { Route as NetworkInfrastructureRouteImport } from './routes/network-infrastructure'
 import { Route as NetworkSecurityRouteImport } from './routes/network-security'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResidentialInternetRouteImport } from './routes/residential-internet'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as UnifiedCommunicationsRouteImport } from './routes/unified-communications'
 
 const IndexRoute = IndexRouteImport.update({
@@ -27,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoverageRoute = CoverageRouteImport.update({
@@ -49,6 +57,11 @@ const NetworkSecurityRoute = NetworkSecurityRouteImport.update({
   path: '/network-security',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResidentialInternetRoute = ResidentialInternetRouteImport.update({
   id: '/residential-internet',
   path: '/residential-internet',
@@ -57,6 +70,11 @@ const ResidentialInternetRoute = ResidentialInternetRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UnifiedCommunicationsRoute = UnifiedCommunicationsRouteImport.update({
@@ -68,35 +86,44 @@ const UnifiedCommunicationsRoute = UnifiedCommunicationsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/internet-packages': typeof InternetPackagesRoute
   '/network-infrastructure': typeof NetworkInfrastructureRoute
   '/network-security': typeof NetworkSecurityRoute
+  '/privacy': typeof PrivacyRoute
   '/residential-internet': typeof ResidentialInternetRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/unified-communications': typeof UnifiedCommunicationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/internet-packages': typeof InternetPackagesRoute
   '/network-infrastructure': typeof NetworkInfrastructureRoute
   '/network-security': typeof NetworkSecurityRoute
+  '/privacy': typeof PrivacyRoute
   '/residential-internet': typeof ResidentialInternetRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/unified-communications': typeof UnifiedCommunicationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/coverage': typeof CoverageRoute
   '/internet-packages': typeof InternetPackagesRoute
   '/network-infrastructure': typeof NetworkInfrastructureRoute
   '/network-security': typeof NetworkSecurityRoute
+  '/privacy': typeof PrivacyRoute
   '/residential-internet': typeof ResidentialInternetRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/unified-communications': typeof UnifiedCommunicationsRoute
 }
 export interface FileRouteTypes {
@@ -104,46 +131,58 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
     | '/coverage'
     | '/internet-packages'
     | '/network-infrastructure'
     | '/network-security'
+    | '/privacy'
     | '/residential-internet'
     | '/services'
+    | '/terms'
     | '/unified-communications'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/contact'
     | '/coverage'
     | '/internet-packages'
     | '/network-infrastructure'
     | '/network-security'
+    | '/privacy'
     | '/residential-internet'
     | '/services'
+    | '/terms'
     | '/unified-communications'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
     | '/coverage'
     | '/internet-packages'
     | '/network-infrastructure'
     | '/network-security'
+    | '/privacy'
     | '/residential-internet'
     | '/services'
+    | '/terms'
     | '/unified-communications'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   CoverageRoute: typeof CoverageRoute
   InternetPackagesRoute: typeof InternetPackagesRoute
   NetworkInfrastructureRoute: typeof NetworkInfrastructureRoute
   NetworkSecurityRoute: typeof NetworkSecurityRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResidentialInternetRoute: typeof ResidentialInternetRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   UnifiedCommunicationsRoute: typeof UnifiedCommunicationsRoute
 }
 
@@ -161,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coverage': {
@@ -191,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NetworkSecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/residential-internet': {
       id: '/residential-internet'
       path: '/residential-internet'
@@ -203,6 +256,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/unified-communications': {
@@ -218,12 +278,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   CoverageRoute: CoverageRoute,
   InternetPackagesRoute: InternetPackagesRoute,
   NetworkInfrastructureRoute: NetworkInfrastructureRoute,
   NetworkSecurityRoute: NetworkSecurityRoute,
+  PrivacyRoute: PrivacyRoute,
   ResidentialInternetRoute: ResidentialInternetRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   UnifiedCommunicationsRoute: UnifiedCommunicationsRoute,
 }
 export const routeTree = rootRouteImport
