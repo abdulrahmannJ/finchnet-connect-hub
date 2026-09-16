@@ -52,7 +52,7 @@ export const services = [
   { title: "Structural Cabling", icon: Cable, description: "Organized network cabling installed for reliability and maintainability.", href: "/services" },
   { title: "Customized Networking Solutions", icon: HousePlug, description: "Purpose-built networking for residential, commercial, and organizational needs.", href: "/services" },
   { title: "Network Infrastructure Design", icon: Network, description: "Scalable network planning based on property, capacity, and operational needs.", href: "/network-infrastructure" },
-];
+] as const;
 
 export const navItems = [
   { label: "Home", href: "/" },
@@ -61,7 +61,7 @@ export const navItems = [
   { label: "Residential", href: "/residential-internet" },
   { label: "About", href: "/about" },
   { label: "Coverage", href: "/coverage" },
-];
+] as const;
 
 export const propertyTypes = [
   { title: "Individual homes", icon: HousePlug, text: "A practical connection and setup planned around your household." },
