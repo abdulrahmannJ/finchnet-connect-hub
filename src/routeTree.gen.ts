@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InternetPackagesRouteImport } from './routes/internet-packages'
+import { Route as NetworkInfrastructureRouteImport } from './routes/network-infrastructure'
+import { Route as NetworkSecurityRouteImport } from './routes/network-security'
+import { Route as ResidentialInternetRouteImport } from './routes/residential-internet'
+import { Route as ServicesRouteImport } from './routes/services'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InternetPackagesRoute = InternetPackagesRouteImport.update({
+  id: '/internet-packages',
+  path: '/internet-packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkInfrastructureRoute = NetworkInfrastructureRouteImport.update({
+  id: '/network-infrastructure',
+  path: '/network-infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkSecurityRoute = NetworkSecurityRouteImport.update({
+  id: '/network-security',
+  path: '/network-security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResidentialInternetRoute = ResidentialInternetRouteImport.update({
+  id: '/residential-internet',
+  path: '/residential-internet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/internet-packages': typeof InternetPackagesRoute
+  '/network-infrastructure': typeof NetworkInfrastructureRoute
+  '/network-security': typeof NetworkSecurityRoute
+  '/residential-internet': typeof ResidentialInternetRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/internet-packages': typeof InternetPackagesRoute
+  '/network-infrastructure': typeof NetworkInfrastructureRoute
+  '/network-security': typeof NetworkSecurityRoute
+  '/residential-internet': typeof ResidentialInternetRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/internet-packages': typeof InternetPackagesRoute
+  '/network-infrastructure': typeof NetworkInfrastructureRoute
+  '/network-security': typeof NetworkSecurityRoute
+  '/residential-internet': typeof ResidentialInternetRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/internet-packages'
+    | '/network-infrastructure'
+    | '/network-security'
+    | '/residential-internet'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/internet-packages'
+    | '/network-infrastructure'
+    | '/network-security'
+    | '/residential-internet'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/internet-packages'
+    | '/network-infrastructure'
+    | '/network-security'
+    | '/residential-internet'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InternetPackagesRoute: typeof InternetPackagesRoute
+  NetworkInfrastructureRoute: typeof NetworkInfrastructureRoute
+  NetworkSecurityRoute: typeof NetworkSecurityRoute
+  ResidentialInternetRoute: typeof ResidentialInternetRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/internet-packages': {
+      id: '/internet-packages'
+      path: '/internet-packages'
+      fullPath: '/internet-packages'
+      preLoaderRoute: typeof InternetPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network-infrastructure': {
+      id: '/network-infrastructure'
+      path: '/network-infrastructure'
+      fullPath: '/network-infrastructure'
+      preLoaderRoute: typeof NetworkInfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network-security': {
+      id: '/network-security'
+      path: '/network-security'
+      fullPath: '/network-security'
+      preLoaderRoute: typeof NetworkSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/residential-internet': {
+      id: '/residential-internet'
+      path: '/residential-internet'
+      fullPath: '/residential-internet'
+      preLoaderRoute: typeof ResidentialInternetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InternetPackagesRoute: InternetPackagesRoute,
+  NetworkInfrastructureRoute: NetworkInfrastructureRoute,
+  NetworkSecurityRoute: NetworkSecurityRoute,
+  ResidentialInternetRoute: ResidentialInternetRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
